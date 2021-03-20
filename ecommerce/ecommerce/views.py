@@ -1,4 +1,5 @@
 from django.shortcuts import HttpResponse, render
+from .forms import ContactForm
 
 
 def home_page(request):
@@ -16,9 +17,14 @@ def about_page(request):
 
 
 def contact_page(request):
+    contact_form = ContactForm(request.POST or None)
     context = {
         "title": "Contact",
+        "form": contact_form,
     }
+    if contact_form.is_valid():
+        print(contact_form.cleaned_data)
+
     if request.method == "POST":
         print("A post request has been made!", request.POST.get('fullName'))
         print(request.POST.get('email'))

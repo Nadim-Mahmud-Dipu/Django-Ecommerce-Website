@@ -16,7 +16,16 @@
     <div class="text-center">
         <h1>{{ title }}</h1>
     </div>
-    <button class="btn btn-dark">Okay</button>
+    <div class="col-sm-6 col-12">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input class="form-control" type="text" name="fullName" placeholder="Name">
+            <input class="form-control" type="email" name="email" placeholder="Email">
+            <textarea class="form-control" name="content" id="" cols="30" rows="10"
+                      placeholder="Your Content"></textarea>
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </form>
+    </div>
 </div>
 
 <!-- Optional JavaScript -->
